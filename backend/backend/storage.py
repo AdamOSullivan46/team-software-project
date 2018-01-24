@@ -42,7 +42,7 @@ class Game:
 
     >>> print(Game("dave"))
     dave: []
-	
+	<BLANKLINE>
     """
 	def __init__(self, username):
 		self.usernames = [username]
