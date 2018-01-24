@@ -30,9 +30,10 @@ class Player:  # pylint: disable=too-few-public-methods
 
     def __eq__(self, other):
         return self.user_id == other.user_id
-		
+
+
 class Game:  # pylint: disable=too-few-public-methods
-	"""A class representing a game of
+    """A class representing a game of
     monopoly.
 
     Initialisation of an instance of this class will store
@@ -42,25 +43,33 @@ class Game:  # pylint: disable=too-few-public-methods
 
     >>> print(Game("dave"))
     dave: []
-	<BLANKLINE>
+    <BLANKLINE>
     """
-	def __init__(self, username):
-		self.usernames = [username]
+    def __init__(self, user_id):
+        self.users = [user_id]
+
+    def add_user(self, username):
+	    """Add a new user to the game if not already there.
+        """
+        if user_id not in self.users:
+            self.users += user_id
+
+    def get_rolls(self):
+	    """Get all dice roll results associated with the game.
 		
-	def add_user(self, username):
-		self.usernames += username
-	
-	def get_rolls(self):
-		user_rolls = []
-		for user in self.usernames:
-			user_rolls[user] = [user.rolls]
-		return user_rolls
-		
-	def __str__(self):
-		answer = ""
-		for user in self.usernames:
-			answer += '%s: %s\n' % (user.username, user.rolls)
-		return answer
+		NOTE: Only one game exists currently, when multiple can this must be edited.
+		"""
+        user_rolls = []
+        for user_id in self.users:
+		    user = retrieve_player(user_id)
+            user_rolls[user_id] = [user.rolls]
+        return user_rolls
+
+    def __str__(self):
+        answer = ""
+        for user in self.usernames:
+            answer += '%s: %s\n' % (user.username, user.rolls)
+        return answer
 
 
 class DatabaseLookupError(LookupError):
