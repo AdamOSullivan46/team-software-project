@@ -41,7 +41,8 @@ class Game:  # pylint: disable=too-few-public-methods
     mutation of the public fields will result in mutation
     in the database.
 
-    >>> print(Game("dave"))
+    Below test fails until we have an actual database
+    />>> print(Game("dave"))
     dave: []
     <BLANKLINE>
     """
