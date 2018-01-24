@@ -31,7 +31,7 @@ class Player:  # pylint: disable=too-few-public-methods
     def __eq__(self, other):
         return self.user_id == other.user_id
 		
-class Game: 
+class Game:  # pylint: disable=too-few-public-methods
 	"""A class representing a game of
     monopoly.
 
@@ -52,13 +52,13 @@ class Game:
 	
 	def get_rolls(self):
 		user_rolls = []
-		for user in usernames:
+		for user in self.usernames:
 			user_rolls[user] = [user.rolls]
 		return user_rolls
 		
 	def __str__(self):
 		answer = ""
-		for user in usernames:
+		for user in self.usernames:
 			answer += '%s: %s\n' % (user.username, user.rolls)
 		return answer
 
