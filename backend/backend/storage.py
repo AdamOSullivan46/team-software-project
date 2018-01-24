@@ -48,26 +48,27 @@ class Game:  # pylint: disable=too-few-public-methods
     def __init__(self, user_id):
         self.users = [user_id]
 
-    def add_user(self, username):
-	    """Add a new user to the game if not already there.
+    def add_user(self, user_id):
+        """Add a new user to the game if not already there.
         """
         if user_id not in self.users:
             self.users += user_id
 
     def get_rolls(self):
-	    """Get all dice roll results associated with the game.
-		
-		NOTE: Only one game exists currently, when multiple can this must be edited.
-		"""
+        """Get all dice roll results associated with the game.
+
+        NOTE:Only 1 game exists currently, when many can this must be edited.
+        """
         user_rolls = []
         for user_id in self.users:
-		    user = retrieve_player(user_id)
+            user = retrieve_player(user_id)
             user_rolls[user_id] = [user.rolls]
         return user_rolls
 
     def __str__(self):
         answer = ""
-        for user in self.usernames:
+        for user in self.users:
+            user = retrieve_player(user)
             answer += '%s: %s\n' % (user.username, user.rolls)
         return answer
 
