@@ -30,6 +30,37 @@ class Player:  # pylint: disable=too-few-public-methods
 
     def __eq__(self, other):
         return self.user_id == other.user_id
+		
+class Game: 
+	"""A class representing a game of
+    monopoly.
+
+    Initialisation of an instance of this class will store
+    it in the database automatically. Similarly, any
+    mutation of the public fields will result in mutation
+    in the database.
+
+    >>> print(Game("dave"))
+    dave: []
+	
+    """
+	def __init__(self, username):
+		self.usernames = [username]
+		
+	def add_user(self, username):
+		self.usernames += username
+	
+	def get_rolls(self):
+		user_rolls = []
+		for user in usernames:
+			user_rolls[user] = [user.rolls]
+		return user_rolls
+		
+	def __str__(self):
+		answer = ""
+		for user in usernames:
+			answer += '%s: %s\n' % (user.username, user.rolls)
+		return answer
 
 
 class DatabaseLookupError(LookupError):
