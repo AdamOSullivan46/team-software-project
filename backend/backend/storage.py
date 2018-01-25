@@ -61,18 +61,24 @@ class Game:  # pylint: disable=too-few-public-methods
         NOTE:Only 1 game exists currently, when many can this must be edited.
         """
         user_rolls = []
+        """
+        #Cannot currently work without db
         for user_id in self.users:
             user = retrieve_player(user_id)
             user_rolls[user_id] = [user.rolls]
+        """
         return user_rolls
 
     def __str__(self):
         answer = ""
+        """
+        #Cannot currently work without db
         for user in self.users:
             user = retrieve_player(user)
             answer += '%s: %s\n' % (user.username, user.rolls)
+        """
         return answer
-
+    
 
 class DatabaseLookupError(LookupError):
     """Errors for when a key is not found in the database"""

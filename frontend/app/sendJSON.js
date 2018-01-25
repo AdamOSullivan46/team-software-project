@@ -1,11 +1,11 @@
 // Generate JSON to send to server on game start.
 export function generateGameStartJSON() {
-    return JSON.stringify({type: 'gameStart', name: document.getElementByID("username").value});
+    return JSON.stringify({type: 'gameStart', name: document.getElementByID('username').value});
 }
 
 // Generate JSON to send to server on game start.
 export function generateDieRollJSON() {
-    return JSON.stringify({type: 'dieRoll', name: document.getElementByID("username").value});
+    return JSON.stringify({type: 'dieRoll', name: document.getElementByID('username').value});
 }
 
 // Send a POST request to the server for the game start.
