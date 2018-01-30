@@ -4,4 +4,5 @@ pages = {
     'notify_turn': 'backend.turn:send_turn_notifications',
     'create_user_entry': 'backend.turn:create_user_entry',
     'end_turn': 'backend.turn:end_turn',
+    'websocket': 'backend.websocket:hello',
 }
