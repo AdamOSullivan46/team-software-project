@@ -66,7 +66,7 @@ window.onload = () => {
         new_uri = "ws:";
     }
     new_uri += "//" + loc.host;
-    new_uri += loc.pathname + "/ws2";
+    new_uri += loc.pathname + "ws2/";
 
     let ws = new WebSocket(new_uri),
         messages = document.createElement('ul');
