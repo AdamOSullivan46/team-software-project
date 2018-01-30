@@ -29,7 +29,7 @@ COPY frontend /frontend
 
 RUN pip3 install -r /backend/requirements.txt
 RUN cd /backend; python3 setup.py develop --script-dir=/var/www/html/cgi-bin
-RUN python3 backend/websocket.py&
+RUN cd /backend; python3 backend/websocket.py
 RUN cd /frontend; npm install; npm start && cp -r dist/* /var/www/html
 RUN cd /var/www/html/cgi-bin; find . -type f -not -name "*.py" -exec mv {} {}.py ';'
 RUN chmod -R 755 /var/www/html
