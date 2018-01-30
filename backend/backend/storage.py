@@ -78,7 +78,7 @@ class Game:  # pylint: disable=too-few-public-methods
             answer += '%s: %s\n' % (user.username, user.rolls)
         """
         return answer
-    
+
 
 class DatabaseLookupError(LookupError):
     """Errors for when a key is not found in the database"""
