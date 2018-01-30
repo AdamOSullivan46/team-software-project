@@ -21,6 +21,8 @@ RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR
 
 COPY apache2 /etc/apache2
 RUN ln -s /etc/apache2/mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
+RUN a2enmod proxy proxy_wstunnel
+RUN service apache2 restart
 
 COPY backend /backend
 COPY frontend /frontend
