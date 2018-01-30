@@ -59,7 +59,16 @@ window.onload = () => {
         });
     };
 
-    let ws = new WebSocket("ws://ws2:5678/"),
+    let loc = window.location, new_uri;
+    if (loc.protocol === "https:") {
+        new_uri = "wss:";
+    } else {
+        new_uri = "ws:";
+    }
+    new_uri += "//" + loc.host;
+    new_uri += loc.pathname + "/ws2";
+
+    let ws = new WebSocket(new_uri),
         messages = document.createElement('ul');
     ws.onmessage = function (event) {
         var messages = document.getElementsByTagName('ul')[0],
