@@ -22,14 +22,12 @@ RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR
 COPY apache2 /etc/apache2
 RUN ln -s /etc/apache2/mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
 RUN a2enmod proxy proxy_wstunnel
-RUN service apache2 restart
 
 COPY backend /backend
 COPY frontend /frontend
 
 RUN pip3 install -r /backend/requirements.txt
 RUN cd /backend; python3 setup.py develop --script-dir=/var/www/html/cgi-bin
-RUN cd /backend; python3 backend/websocket.py
 RUN cd /frontend; npm install; npm start && cp -r dist/* /var/www/html
 RUN cd /var/www/html/cgi-bin; find . -type f -not -name "*.py" -exec mv {} {}.py ';'
 RUN chmod -R 755 /var/www/html
