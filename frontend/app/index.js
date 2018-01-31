@@ -70,6 +70,9 @@ window.onload = () => {
 
     let ws = new WebSocket(new_uri),
         messages = document.createElement('ul');
+    ws.onopen = function() {
+        ws.send('Hello!');
+    }
     ws.onmessage = function (event) {
         var messages = document.getElementsByTagName('ul')[0],
             message = document.createElement('li'),
