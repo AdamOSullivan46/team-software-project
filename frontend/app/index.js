@@ -52,11 +52,13 @@ window.onload = () => {
     // Add user to the turn order when they submit their username
     document.querySelector('#usernameInput').onclick = (click) => {
         click.preventDefault();
+        const username = document.querySelector('#username').value;
         sendJSON.sendJSON({
-            jsonObject: {'username': document.querySelector('#username').value},
+            jsonObject: {'username': username},
             serverAddress: 'cgi-bin/create_user_entry.py',
             callback: () => {}
         });
+        ws.send(username);
     };
 
     let loc = window.location, new_uri;
