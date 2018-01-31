@@ -37,5 +37,4 @@ RUN chmod 777 /var/www/html/cgi-bin/turn_data.db
 
 EXPOSE 80
 
-ENTRYPOINT ["/usr/sbin/apache2"]
-CMD ["-D", "FOREGROUND"]
+CMD ["/bin/bash", "-c", "python3 /backend/backend/websocket.py; /usr/sbin/apache2 -D FOREGROUND"]
