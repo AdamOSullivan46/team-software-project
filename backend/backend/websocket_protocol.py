@@ -1,4 +1,4 @@
-from autobahn.asyncio.websocket import WebSocketServerProtocol
+from autobahn.twisted.websocket import WebSocketServerProtocol
 
 class MyServerProtocol(WebSocketServerProtocol):
 
