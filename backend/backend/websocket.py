@@ -1,6 +1,7 @@
 if __name__ == '__main__':
 
     import sys
+    from websocket_protocol import MyServerProtocol
 
     from twisted.python import log
     from twisted.internet import reactor
